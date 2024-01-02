@@ -1,5 +1,44 @@
 <script>
   import Step from "../components/Step.svelte";
+  import Mouse from "../components/Mouse.svelte";
+  import { onMount } from "svelte";
+  // import { typewriter } from "../components/Typewriter.svelte";
+
+  let displayText = "";
+  let showTypewriter = false;
+
+  function handleClick() {
+    displayText = "We are not yet live. Check back in 2 weeks!";
+    showTypewriter = true;
+  }
+
+  function typewriter(node, { speed = 1 }) {
+    const valid =
+      node.childNodes.length === 1 &&
+      node.childNodes[0].nodeType === Node.TEXT_NODE;
+
+    if (!valid) {
+      throw new Error(
+        `This transition only works on elements with a single text node child`
+      );
+    }
+
+    const text = node.textContent;
+    const duration = text.length / (speed * 0.01);
+
+    return {
+      duration,
+      tick: (t) => {
+        const i = Math.trunc(text.length * t);
+        node.textContent = text.slice(0, i);
+      },
+    };
+  }
+
+  onMount(() => {
+    // Resetting the typewriter state when component is mounted
+    showTypewriter = false;
+  });
 
   let steps = [
     {
@@ -39,6 +78,7 @@
 </script>
 
 <main class="flex flex-col flex-1 p-4">
+  <!-- <Mouse /> -->
   <section
     id="introPage"
     class="grid grid-cols-1 lg:grid-cols-2 hap-10 ml-8 py-8 sm:py-14"
@@ -58,18 +98,22 @@
         <span class="roboto text-violet-400">trial and error</span>
       </p>
       <button
-        class="blueShadow mx-auto lg:mr-auto lg:ml-0 text-base sm:text-lg md:text-xl poppins relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950"
+        on:click={handleClick}
+        class="blueShadow mx-auto lg:mr-auto lg:ml-0 text-base sm:text-lg md:text-xl roboto relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950"
       >
         <div
           class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
         />
         <h4 class="relative z-9">Get in touch &rarr;</h4>
       </button>
+      {#if showTypewriter}
+        <div transition:typewriter>{displayText}</div>
+      {/if}
     </div>
-    <div class="relative shadow-2xl grid place-items-center">
+    <div class="relative shadow-2xl grid place-items-center sm: pt-10">
       <img
         src={"images/spin.gif"}
-        alt="Zetane Engine"
+        alt="Spinning Loading Running GIF"
         class="object-cover z-[2] max-h-[70vh]"
       />
     </div>
@@ -78,7 +122,7 @@
     <div class="flex flex-col gap-2 text-center">
       <h6 class="text-large sm:text-xl md:text-2xl">Our target areas.</h6>
       <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
-        Curious to <span class="poppins text-violet-400">see</span> our work?
+        Curious to <span class="roboto text-violet-400">see</span> our work?
       </h3>
     </div>
     <a
@@ -116,17 +160,17 @@
     >
       <h6 class="text-large sm:text-xl md:text-2xl">Want to know more?</h6>
       <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
-        A bit <span class="poppins text-violet-400">about</span> us.
+        A bit <span class="roboto text-violet-400">about</span> us.
       </h3>
     </div>
-    <p class="mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl">
+    <p class="mx-auto roboto font-semibold text-lg sm:text-xl md:text-2xl">
       We are . . .
     </p>
     <div class="flex flex-col gap-20 w-full mx-auto max-w-[800px]">
       {#each benefits as benefit, index}
         <div class="flex gap-6 sm:gap-8">
           <p
-            class="poppins text-4xl sm:text-5xl md:text-6xl text-slate-500 font-semibold"
+            class="roboto text-4xl sm:text-5xl md:text-6xl text-slate-500 font-semibold"
           >
             0{index + 1}
           </p>
@@ -139,7 +183,7 @@
         </div>
       {/each}
     </div>
-    <h5 class={" text-2xl sm:text-3xl font-semibold text-center poppins "}>
+    <h5 class={" text-2xl sm:text-3xl font-semibold text-center roboto "}>
       The <span class="text-violet-400">Complete</span> Package
     </h5>
     <!-- <div
@@ -151,4 +195,5 @@
     </div>
     <p class="mx-auto">So why not start?</p>
   </section>
+  <!-- <Mouse /> -->
 </main>
