@@ -8,7 +8,7 @@
   let showTypewriter = false;
 
   function handleClick() {
-    displayText = "We are not yet live. Check back in 2 weeks!";
+    displayText = "Reach out at datafulsystems@gmail.com";
     showTypewriter = true;
   }
 
@@ -19,7 +19,7 @@
 
     if (!valid) {
       throw new Error(
-        `This transition only works on elements with a single text node child`
+        `This transition only works on elements with a single text node child`,
       );
     }
 
@@ -42,37 +42,52 @@
 
   let steps = [
     {
-      name: "Webfurl",
-      icon: "fa-solid fa-cart-shopping",
-      description:
-        "WebFurl enables you uncover what technologies have been used to build a web application or page.",
+      name: "Western Medical Society",
+      icon: "fa-solid fa-cart-calendar",
+      description: "They help members (medics) build their career",
+      link: "https://westernmedicalsociety.org/",
     },
     {
-      name: "Eventifurl",
+      name: "Leave No Medic Behind Initiative",
       icon: "fa-regular fa-calendar",
       description:
-        "Reduce the burden of confirming payments when managing your event. Save money.",
+        "The Leave No Medic Behind Initiative Charity Run is a fundraising project by the Association of Medical Students of the University of Nairobi (AMSUN) to meet the financial needs of underprivileged students in the School of Medicine.",
+      link: "https://lnmb-run.org/",
+    },
+    {
+      name: "Mshauri YEP",
+      icon: "fa-regular fa-calendar",
+      description:
+        "They resource centers to provide access to libraries , mentorship, digital literacy and vocational skills to children and youths in under resourced areas in Kenya.",
+      link: "https://mshauriyep.org/",
+    },
+    {
+      name: "Mhealth 4 Africa",
+      icon: "fa-regular fa-calendar",
+      description:
+        "Their mission is to expand quality healthcare access to under resourced and remote communities through capacity building, innovation, and technology.",
+      link: "https://mhealth4africa.org/",
     },
   ];
 
   let benefits = [
     {
-      metric: "Data-Powered Insights",
-      name: "Webfurl",
+      metric: "Website Development",
+      name: "Website Development",
       description:
-        "Uncover the technologies used to build web applications or pages. Harness the power of data to gain insights into the technological landscape of the online world.",
+        "We will help you build a website that will help you reach your target audience and grow your business online.",
     },
     {
-      metric: "Efficient Event Management",
-      name: "Eventifurl",
+      metric: "Custom Enterprise Resource Planning",
+      name: "Custom Enterprise Resource Planning",
       description:
-        "Streamline payment confirmations in event management. Save time and resources by leveraging data to ease the burden of managing events and handling payments.",
+        "We will help you build a custom ERP system that will help you manage your business processes and resources more efficiently. Be it payroll, inventory, accounting, point of sale or customer relationship management.",
     },
     {
       metric: "Innovative Data Solutions",
-      name: "Datafurl Features",
+      name: "Innovative Data Solutions",
       description:
-        "Explore the simplicity and power of data with Datafurl. Embrace trial and error to discover innovative data solutions that can enhance your workflow and decision-making processes.",
+        "We will help you craft innovative data solutions that will help you make better decisions and grow your business.",
     },
   ];
 </script>
@@ -91,11 +106,12 @@
         Unfurl <span class="roboto text-violet-400">your data</span>
       </h2>
       <p class="text-base sm:text-lg md:text-xl">
-        We are focused on harnessing <span class="text-violet-400"
-          >the power of simple data</span
+        We are a <span class="text-violet-400">software development agency</span
         >
-        but open to
-        <span class="roboto text-violet-400">trial and error</span>
+        who will
+        <span class="roboto text-violet-400"
+          >help your business grow online</span
+        >
       </p>
       <button
         on:click={handleClick}
@@ -135,18 +151,18 @@
     </a>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10">
       <Step step={steps[0]}>
-        <p>
-          WebFurl enables you <strong class="text-violet-400"
-            >uncover what technologies</strong
-          > have been used to build a web application or page.
-        </p>
+        <p>{steps[0].description}a</p>
       </Step>
       <Step step={steps[1]}>
-        <p>
-          Reduce the burden of <strong class="text-violet-400"
-            >confirming payments</strong
-          > when managing your event. Save money.
-        </p>
+        <p>{steps[1].description}</p>
+      </Step>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10">
+      <Step step={steps[2]}>
+        <p>{steps[2].description}</p>
+      </Step>
+      <Step step={steps[3]}>
+        <p>{steps[3].description}</p>
       </Step>
     </div>
   </section>
