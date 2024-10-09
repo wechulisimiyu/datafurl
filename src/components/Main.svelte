@@ -43,7 +43,7 @@
   let steps = [
     {
       name: "Western Medical Society",
-      icon: "fa-solid fa-cart-calendar",
+      icon: "fa-solid fa-calendar",
       description: "They help members (medics) build their career",
       link: "https://westernmedicalsociety.org/",
     },

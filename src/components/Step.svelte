@@ -20,7 +20,7 @@
         <div
             class="ml-auto cursor-pointer hover:text-slate-950 duration-200 relative after:absolute after:top-0 after:right-full after:bg-white after:w-full after:h-full after:duration-200 hover:after:translate-x-full after:z-[-1] overflow-hidden"
         >
-            <a href="{step.link}"><p class="z-4">Check them &rarr;</p></a>
+            <a href="{step.link}"><p class="z-4">Check them out &rarr;</p></a>
         </div>
     </div>
 </a>
